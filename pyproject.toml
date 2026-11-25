@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "advanced-rag-agent"
+version = "0.1.0"
+description = "An advanced retrieval-augmented generation agent with hybrid search, reranking, and self-correction, in two lanes: document QA and code search."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [{name = "Saif Ullah"}]
+keywords = ["rag", "langgraph", "retrieval", "agents", "llm", "code-search"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+  "langgraph>=1.0",
+  "pypdf",
+  "rank-bm25",
+  "numpy",
+]
+
+[project.optional-dependencies]
+ml = ["sentence-transformers"]
+dev = ["pytest"]
+
+[project.scripts]
+rag-agent = "advanced_rag_agent.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/saifullah-ai-engineer/advanced-rag-agent"
+Repository = "https://github.com/saifullah-ai-engineer/advanced-rag-agent"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
